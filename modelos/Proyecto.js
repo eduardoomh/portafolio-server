@@ -9,7 +9,12 @@ const ProyectoSchema = mongoose.Schema({
         type: String,
         require: true
     },
-    tecnologias:[{
+    tecnologias_principales:[{
+        type: mongoose.Schema.Types.ObjectId,
+        required: false,
+        ref: "Tecnologia"
+    }],
+    tecnologias_secundarias:[{
         type: mongoose.Schema.Types.ObjectId,
         required: false,
         ref: "Tecnologia"
@@ -42,21 +47,26 @@ const ProyectoSchema = mongoose.Schema({
         require: true
     },
     fecha: {
-        type: Number,
+        type: String,
         require: true
     },
     estado: {
         type: String,
-        default: "PENDIENTE"
+        default: "EN_DESARROLLO"
     },
-
+    imagen: {
+        type: String,
+        require: true
+    },
     updatedAt:{
         type: Date,
-        require: Date.now()
+        default: Date.now(),
+        require: true
     },
     createdAt:{
         type: Date,
-        require: Date.now()
+        default: Date.now(),
+        require: true
     },
 
 });

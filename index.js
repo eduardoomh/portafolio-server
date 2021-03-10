@@ -9,12 +9,16 @@ const app = express();
 const typeDefs = require("./graphql/schema");
 const { Query } = require("./graphql/resolvers/query");
 const { Mutation } = require("./graphql/resolvers/mutation");
+const { Conocimiento } = require("./graphql/resolvers/Conocimiento");
+const { Proyecto } = require("./graphql/resolvers/Proyecto");
 
 const server = new ApolloServer({
     typeDefs,
     resolvers: {
         Query,
         Mutation,
+        Conocimiento,
+        Proyecto
     },
     context: ({req}) => {
         const token = req.headers.authorization;

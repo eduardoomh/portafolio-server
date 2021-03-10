@@ -14,13 +14,23 @@ const ConocimientoSchema = mongoose.Schema({
         required: false,
         ref: "Tecnologia"
     }],
+    tipo: {
+        type: String,
+        default: "SECUNDARIO"
+    },
+    posicion: {
+        type: Number,
+        default: 0
+    },
     updatedAt:{
         type: Date,
-        require: Date.now()
+        default: Date.now(),
+        require: true
     },
     createdAt:{
         type: Date,
-        require: Date.now()
+        default: Date.now(),
+        require: true
     },
 
 });

@@ -1,8 +1,21 @@
+const { where } = require("../modelos/Conocimiento");
 const Conocimiento = require("../modelos/Conocimiento");
 
 async function obtenerConocimientos(){
     try{
-        const conocimientos = await Conocimiento.find().populate("tecnologias");
+        const conocimientos = await Conocimiento.find().where({tipo: "PRINCIPAL"});
+        return conocimientos;
+
+    }
+    catch(err){
+        console.log(err);
+    }
+
+}
+
+async function obtenerConocimientosSecundarios(){
+    try{
+        const conocimientos = await Conocimiento.find().where({tipo: "SECUNDARIO"});
         return conocimientos;
 
     }
@@ -47,6 +60,7 @@ async function actualizarConocimiento(id, input, usuario){
 
 module.exports = {
     obtenerConocimientos,
+    obtenerConocimientosSecundarios,
     crearConocimiento,
     actualizarConocimiento
 }

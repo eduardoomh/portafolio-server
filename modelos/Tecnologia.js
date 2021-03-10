@@ -11,11 +11,13 @@ const TecnologiaSchema = mongoose.Schema({
     },
     updatedAt:{
         type: Date,
-        require: Date.now()
+        default: Date.now(),
+        require: true
     },
     createdAt:{
         type: Date,
-        require: Date.now()
+        default: Date.now(),
+        require: true
     },
 
 });

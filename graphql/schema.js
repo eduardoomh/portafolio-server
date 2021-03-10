@@ -28,12 +28,14 @@ const typeDefs = gql`
         id: ID!
         nombre: String!
         descripcion: String!
-        tecnologias: [Tecnologia]!
+        tecnologias_principales: [Tecnologia]!
+        tecnologias_secundarias: [Tecnologia]!
         repositorios: [Repositorio]!
         detalles: [Detalle]!
         url: String!
-        fecha: Int!
+        fecha: String!
         estado: EstadoProyectoEnum!
+        imagen: String!
         updatedAt: String!
         createdAt: String!
     }
@@ -60,6 +62,8 @@ const typeDefs = gql`
         nombre: String!
         tecnologias: [Tecnologia]!
         descripcion: String!
+        tipo: TipoConocimientoEnum!
+        posicion: Int!
         updatedAt: String!
         createdAt: String!
     }
@@ -74,6 +78,11 @@ const typeDefs = gql`
         CREACION_DE_WIREFRAME
         PENDIENTE
     }
+
+    enum TipoConocimientoEnum{
+        PRINCIPAL 
+        SECUNDARIO
+    } 
 
     input crearRepositorioInput{
         nombre: String!
@@ -102,12 +111,16 @@ const typeDefs = gql`
         nombre: String!
         tecnologias: [ID]!
         descripcion: String!
+        tipo: TipoConocimientoEnum!
+        posicion: Int!
     }
 
     input actualizarConocimiento{
         nombre: String
         tecnologias: [ID]
         descripcion: String
+        tipo: TipoConocimientoEnum
+        posicion: Int
     }
 
     input crearTecnologia{
@@ -123,24 +136,28 @@ const typeDefs = gql`
     input crearProyecto{
         nombre: String!
         descripcion: String!
-        tecnologias: [ID]!
+        tecnologias_principales: [ID]!
+        tecnologias_secundarias: [ID]!
         repositorios: [crearRepositorioInput]!
         detalles: [crearDetalleInput]!
         url: String!
-        fecha: Int!
+        fecha: String!
         estado: EstadoProyectoEnum!
+        imagen: String!
     }
 
     
     input actualizarProyecto{
         nombre: String
         descripcion: String
-        tecnologias: [ID]
+        tecnologias_principales: [ID]
+        tecnologias_secundarias: [ID]
         repositorios: [actualizarRepositorioInput]
         detalles: [actualizarDetalleInput]
         url: String
-        fecha: Int
+        fecha: String
         estado: EstadoProyectoEnum
+        imagen: String
     }
 
     input crearUsuario{
@@ -182,10 +199,13 @@ const typeDefs = gql`
     }
 
     type Query{
-        obtenerUsuario(id: ID!): Usuario!
+        prueba: String!
+        obtenerUsuario: Usuario!
         obtenerProyecto(id: ID!): Proyecto!
         obtenerProyectos: [Proyecto]!
+        obtenerProyectosTerminados: [Proyecto]!
         obtenerConocimientos: [Conocimiento]!
+        obtenerConocimientosSecundarios: [Conocimiento]!
         obtenerTecnologias: [Tecnologia]!
     }
 

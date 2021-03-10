@@ -42,7 +42,7 @@ const UsuarioSchema = mongoose.Schema({
         type: String,
         require: true
     },
-    descricpion:{
+    descripcion:{
         type: String,
         require: true
     },
@@ -68,11 +68,13 @@ const UsuarioSchema = mongoose.Schema({
     },
     updatedAt:{
         type: Date,
-        require: Date.now()
+        default: Date.now(),
+        require: true
     },
     createdAt:{
         type: Date,
-        require: Date.now()
+        default: Date.now(),
+        require: true
     },
 
 });

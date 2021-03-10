@@ -2,7 +2,7 @@ const Proyecto = require("../modelos/Proyecto");
 
 async function obtenerProyecto(id){
     try{
-        const proyecto = await Proyecto.findById(id).populate("tecnologias");
+        const proyecto = await Proyecto.findById(id);
         return proyecto;
 
     }
@@ -14,7 +14,18 @@ async function obtenerProyecto(id){
 
 async function obtenerProyectos(){
     try{
-        const Proyectos = await Proyecto.find().populate("tecnologias");
+        const Proyectos = await Proyecto.find().where({estado: "PENDIENTE"});
+        return Proyectos;
+
+    }
+    catch(err){
+        console.log(err);
+    }
+}
+
+async function obtenerProyectosTerminados(){
+    try{
+        const Proyectos = await Proyecto.find().where({estado: "DISPONIBLE"});
         return Proyectos;
 
     }
@@ -58,6 +69,7 @@ async function actualizarProyecto(id, input, usuario){
 module.exports = {
     obtenerProyecto,
     obtenerProyectos,
+    obtenerProyectosTerminados,
     crearProyecto,
     actualizarProyecto
 }

@@ -13,9 +13,9 @@ async function crearToken(usuario, SECRET_KEY, expiresIn){
     
 
 
-async function obtenerUsuario(id){
+async function obtenerUsuario(){
     try{
-        const usuario = await Usuario.findById(id);
+        const usuario = await Usuario.findById("603cab801321b6390c55b982")
         return usuario;
 
     }
@@ -68,11 +68,13 @@ async function actualizarUsuario(id, input, usuario){
     if(!usuario) throw new Error("No cuenta con los permisos para hacer esta accion");
 
     try{
-        const actualizarUsuario = await Usuario.findByIdAndUpdate(id, {
+         await Usuario.findByIdAndUpdate(id, {
             ...input,
             updatedAt: Date.now()
         });
-        return actualizarUsuario
+
+        const usuario = await Usuario.findById(id);
+        return usuario;
 
     }
     catch(err){
