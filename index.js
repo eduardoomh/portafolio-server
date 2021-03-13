@@ -45,7 +45,7 @@ const server = new ApolloServer({
 
 server.applyMiddleware({app});
 
-const PORT = process.env.PORT | 4000;
+const PORT = process.env.PORT || 4000;
 const DB = process.env.DB;
 
 mongoose.connect("mongodb+srv://jesusmh:wilsonmaniaco@smokerdb.f7rcr.mongodb.net/portafoliodb?retryWrites=true&w=majority", {
