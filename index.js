@@ -43,12 +43,16 @@ const server = new ApolloServer({
     }
 })
 
+/*
 const corsOptions = {
     origin: 'https://jesusmh.vercel.app/',
     credentials: true
 }
 
+
 server.applyMiddleware({ app, cors: corsOptions });
+*/
+server.applyMiddleware({ app});
 
 const PORT = process.env.PORT || 4000;
 const DB = process.env.DB;
