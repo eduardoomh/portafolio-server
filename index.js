@@ -43,7 +43,12 @@ const server = new ApolloServer({
     }
 })
 
-server.applyMiddleware({app});
+const corsOptions = {
+    origin: 'http://localhost:3000',
+    credentials: true
+}
+
+server.applyMiddleware({ app, cors: corsOptions });
 
 const PORT = process.env.PORT || 4000;
 const DB = process.env.DB;
