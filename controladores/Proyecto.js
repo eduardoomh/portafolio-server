@@ -1,4 +1,5 @@
 const Proyecto = require("../modelos/Proyecto");
+const Pagina = require("../modelos/Pagina");
 
 async function obtenerProyecto(id){
     try{
@@ -28,6 +29,18 @@ async function obtenerProyectosTerminados(){
         const Proyectos = await Proyecto.find().where({estado: "DISPONIBLE"});
         return Proyectos;
 
+    }
+    catch(err){
+        console.log(err);
+    }
+}
+
+async function obtenerListaProyectos(){
+    try{
+        const listaProyectos = await Pagina.findOne();
+        return{
+            datos: listaProyectos
+        }
     }
     catch(err){
         console.log(err);
@@ -70,6 +83,7 @@ module.exports = {
     obtenerProyecto,
     obtenerProyectos,
     obtenerProyectosTerminados,
+    obtenerListaProyectos,
     crearProyecto,
     actualizarProyecto
 }

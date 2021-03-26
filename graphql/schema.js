@@ -24,6 +24,25 @@ const typeDefs = gql`
         createdAt: String!
     }
 
+    type Pagina{
+        id: ID!
+        conocimientos: String!
+        proyectos: String!
+        nota_conocimientos: String!
+        nota_proyectos: String!
+    }
+
+    type ListaProyectos{
+        datos: Pagina!
+        proyectos_terminados(estado: EstadoProyectoEnum!): [Proyecto]!
+        proyectos_pendientes(estado: EstadoProyectoEnum!): [Proyecto]!
+    }
+    type ListaConocimientos{
+        datos: Pagina!
+        conocimientos_principales(tipo: TipoConocimientoEnum!): [Conocimiento]!
+        conocimientos_secundarios(tipo: TipoConocimientoEnum!): [Conocimiento]!
+    }
+
     type Proyecto{
         id: ID!
         nombre: String!
@@ -48,6 +67,21 @@ const typeDefs = gql`
         createdAt: String!
     }
 
+    type Mejora{
+        id: ID!
+        descripcion: String!
+        mejoras_pendientes: [DatoMejora]!
+        mejoras_terminadas: [DatoMejora]!
+        notas: String!
+    }
+
+    type DatoMejora{
+        nombre: String!
+        descripcion: String!
+        fecha: String!
+    }
+
+    
     type Repositorio{
         nombre: String!
         url: String!
@@ -113,6 +147,41 @@ const typeDefs = gql`
 
     input actualizarInformacionPerfilInput{
         texto: String
+    }
+
+    input crearMejoraInput{
+        descripcion: String!
+        mejoras_pendientes: [DatoMejoraInput]!
+        mejoras_terminadas: [DatoMejoraInput]!
+        notas: String!
+    }
+
+    
+    input actualizarMejoraInput{
+        descripcion: String
+        mejoras_pendientes: [DatoMejoraInput]
+        mejoras_terminadas: [DatoMejoraInput]
+        notas: String
+    }
+
+    input DatoMejoraInput{
+        nombre: String!
+        descripcion: String!
+        fecha: String!
+    }
+
+    input crearPaginaInput{
+        conocimientos: String!
+        proyectos: String!
+        nota_conocimientos: String!
+        nota_proyectos: String!
+    }
+
+    input actualizarPaginaInput{
+        conocimientos: String
+        proyectos: String
+        nota_conocimientos: String
+        nota_proyectos: String
     }
 
 
@@ -221,6 +290,9 @@ const typeDefs = gql`
         obtenerConocimientos: [Conocimiento]!
         obtenerConocimientosSecundarios: [Conocimiento]!
         obtenerTecnologias: [Tecnologia]!
+        obtenerMejora: Mejora!
+        obtenerListaProyectos(tipo1: EstadoProyectoEnum! tipo2: EstadoProyectoEnum!): ListaProyectos!
+        obtenerListaConocimientos(tipo1: TipoConocimientoEnum! tipo2: TipoConocimientoEnum!): ListaConocimientos!
     }
 
     type Mutation{
@@ -233,6 +305,10 @@ const typeDefs = gql`
         actualizarConocimiento(id: ID! input: actualizarConocimiento!): Conocimiento!
         crearTecnologia(input: crearTecnologia!): Tecnologia!
         actualizarTecnologia(id: ID! input: actualizarTecnologia!): Tecnologia!
+        crearMejora(input: crearMejoraInput!): Mejora!
+        actualizarMejora(id: ID! input: actualizarMejoraInput!): Mejora!
+        crearPagina(input: crearPaginaInput!): Pagina!
+        actualizarPagina(id: ID! input: actualizarPaginaInput!): Pagina!
     }
 
 
