@@ -42,26 +42,46 @@ const UsuarioSchema = mongoose.Schema({
         type: String,
         require: true
     },
-    descripcion:{
-        type: String,
-        require: true
-    },
-    experiencia:{
-        type: String,
-        require: true
-    },
-    estudios:{
-        type: String,
-        require: true
-    },
-    personalidad:{
-        type: String,
-        require: true
-    },
-    pasatiempos:{
-        type: String,
-        require: true
-    },
+    descripcion: [
+        mongoose.Schema({
+            texto: {
+                type: String,
+                require: true
+            }
+        })
+    ],
+    experiencia: [
+        mongoose.Schema({
+            texto: {
+                type: String,
+                require: true
+            }
+        })
+    ],
+    estudios: [
+        mongoose.Schema({
+            texto: {
+                type: String,
+                require: true
+            }
+        })
+    ],
+    personalidad: [
+        mongoose.Schema({
+            texto: {
+                type: String,
+                require: true
+            }
+        })
+    ],
+    pasatiempos: [
+        mongoose.Schema({
+            texto: {
+                type: String,
+                require: true
+            }
+        })
+    ],
     telefono:{
         type: String,
         require: true

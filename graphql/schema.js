@@ -14,11 +14,11 @@ const typeDefs = gql`
         github: String!
         edad: Int!
         imagen: String!
-        descripcion: String!
-        experiencia: String!
-        estudios: String!
-        personalidad: String!
-        pasatiempos: String!
+        descripcion: [InformacionPerfil]!
+        experiencia: [InformacionPerfil]!
+        estudios: [InformacionPerfil]!
+        personalidad:[InformacionPerfil]!
+        pasatiempos: [InformacionPerfil]!
         telefono: String!
         updatedAt: String!
         createdAt: String!
@@ -51,6 +51,11 @@ const typeDefs = gql`
     type Repositorio{
         nombre: String!
         url: String!
+    }
+
+    type InformacionPerfil{
+        texto: String!
+
     }
 
     type Detalle{
@@ -101,6 +106,15 @@ const typeDefs = gql`
     input actualizarDetalleInput{
         nombre: String
     }
+
+    input crearInformacionPerfilInput{
+        texto: String!
+    }
+
+    input actualizarInformacionPerfilInput{
+        texto: String
+    }
+
 
     input Login{
         correo_electronico: String!
@@ -171,11 +185,11 @@ const typeDefs = gql`
         github: String!
         edad: Int!
         imagen: String!
-        descripcion: String!
-        experiencia: String!
-        estudios: String!
-        personalidad: String!
-        pasatiempos: String!
+        descripcion: [crearInformacionPerfilInput]!
+        experiencia: [crearInformacionPerfilInput]!
+        estudios: [crearInformacionPerfilInput]!
+        personalidad: [crearInformacionPerfilInput]!
+        pasatiempos: [crearInformacionPerfilInput]!
         telefono: String!
     }
 
@@ -190,11 +204,11 @@ const typeDefs = gql`
         github: String
         edad: Int
         imagen: String
-        descripcion: String
-        experiencia: String
-        estudios: String
-        personalidad: String
-        pasatiempos: String
+        descripcion: [actualizarInformacionPerfilInput]
+        experiencia: [actualizarInformacionPerfilInput]
+        estudios: [actualizarInformacionPerfilInput]
+        personalidad: [actualizarInformacionPerfilInput]
+        pasatiempos: [actualizarInformacionPerfilInput]
         telefono: String
     }
 
