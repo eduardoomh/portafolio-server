@@ -2,6 +2,7 @@ const UsuarioController = require("../../controladores/Usuario");
 const ProyectoController = require("../../controladores/Proyecto");
 const ConocimientoController = require("../../controladores/Conocimiento");
 const TecnologiaController = require("../../controladores/Tecnologia");
+const MejoraController = require("../../controladores/Mejora");
 
 module.exports = {
     Query:{
@@ -14,6 +15,9 @@ module.exports = {
         obtenerProyectosTerminados: () => ProyectoController.obtenerProyectosTerminados(),
         obtenerConocimientos: () => ConocimientoController.obtenerConocimientos(),
         obtenerConocimientosSecundarios: () => ConocimientoController.obtenerConocimientosSecundarios(),
-        obtenerTecnologias: () => TecnologiaController.obtenerTecnologias()
+        obtenerTecnologias: () => TecnologiaController.obtenerTecnologias(),
+        obtenerMejora: () => MejoraController.obtenerMejora(),
+        obtenerListaProyectos: () => ProyectoController.obtenerListaProyectos(),
+        obtenerListaConocimientos: () => ConocimientoController.obtenerListaConocimientos()
     }
 }

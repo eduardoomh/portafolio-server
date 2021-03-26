@@ -1,5 +1,6 @@
 const { where } = require("../modelos/Conocimiento");
 const Conocimiento = require("../modelos/Conocimiento");
+const Pagina = require("../modelos/Pagina");
 
 async function obtenerConocimientos(){
     try{
@@ -23,6 +24,18 @@ async function obtenerConocimientosSecundarios(){
         console.log(err);
     }
 
+}
+
+async function obtenerListaConocimientos(){
+    try{
+        const listaConocimientos = await Pagina.findOne();
+        return{
+            datos: listaConocimientos
+        }
+    }
+    catch(err){
+        console.log(err);
+    }
 }
 
 async function crearConocimiento(input, usuario){
@@ -61,6 +74,7 @@ async function actualizarConocimiento(id, input, usuario){
 module.exports = {
     obtenerConocimientos,
     obtenerConocimientosSecundarios,
+    obtenerListaConocimientos,
     crearConocimiento,
     actualizarConocimiento
 }
