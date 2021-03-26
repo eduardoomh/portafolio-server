@@ -15,7 +15,7 @@ async function crearToken(usuario, SECRET_KEY, expiresIn){
 
 async function obtenerUsuario(){
     try{
-        const usuario = await Usuario.findById("603cab801321b6390c55b982")
+        const usuario = await Usuario.findById("605d4ce91dd5d30368757d0b")
         return usuario;
 
     }
