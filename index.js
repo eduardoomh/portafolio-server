@@ -13,6 +13,7 @@ const { Conocimiento } = require("./graphql/resolvers/Conocimiento");
 const { Proyecto } = require("./graphql/resolvers/Proyecto");
 const { ListaProyectos } = require("./graphql/resolvers/ListaProyectos");
 const { ListaConocimientos } = require("./graphql/resolvers/ListaConocimientos");
+const { Estudio } = require("./graphql/resolvers/Estudio");
 
 const server = new ApolloServer({
     typeDefs,
@@ -22,7 +23,8 @@ const server = new ApolloServer({
         Conocimiento,
         Proyecto,
         ListaProyectos,
-        ListaConocimientos
+        ListaConocimientos,
+        Estudio
     },
     context: ({req}) => {
         const token = req.headers.authorization;

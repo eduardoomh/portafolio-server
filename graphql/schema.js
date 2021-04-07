@@ -12,13 +12,14 @@ const typeDefs = gql`
         apodo: String!
         facebook: String!
         github: String!
+        linkedin: String!
         edad: Int!
         imagen: String!
-        descripcion: [InformacionPerfil]!
+        descripcion: String!
+        estudios: [Estudio]!
         experiencia: [InformacionPerfil]!
-        estudios: [InformacionPerfil]!
         personalidad:[InformacionPerfil]!
-        pasatiempos: [InformacionPerfil]!
+        pasatiempos: String!
         telefono: String!
         updatedAt: String!
         createdAt: String!
@@ -75,6 +76,14 @@ const typeDefs = gql`
         notas: String!
     }
 
+    type Estudio{
+        titulo: String!
+        descripcion: String!
+        tecnologia: Tecnologia!
+        fecha: String!
+        tipo: TipoEstudioEnum!
+    }
+
     type DatoMejora{
         nombre: String!
         descripcion: String!
@@ -122,6 +131,11 @@ const typeDefs = gql`
         PRINCIPAL 
         SECUNDARIO
     } 
+
+    enum TipoEstudioEnum{
+        ESTUDIO_UNIVERSITARIO
+        ESTUDIO_AUTODIDACTA
+    }
 
     input crearRepositorioInput{
         nombre: String!
@@ -182,6 +196,22 @@ const typeDefs = gql`
         proyectos: String
         nota_conocimientos: String
         nota_proyectos: String
+    }
+
+    input crearEstudioInput{
+        titulo: String!
+        descripcion: String!
+        tecnologia: ID!
+        fecha: String!
+        tipo: TipoEstudioEnum!
+    }
+
+    input actualizarEstudioInput{
+        titulo: String
+        descripcion: String
+        tecnologia: ID
+        fecha: String
+        tipo: TipoEstudioEnum
     }
 
 
@@ -252,13 +282,14 @@ const typeDefs = gql`
         contrasena: String!
         facebook: String!
         github: String!
+        linkedin: String!
         edad: Int!
         imagen: String!
-        descripcion: [crearInformacionPerfilInput]!
+        descripcion: String!
+        estudios: [crearEstudioInput]!
         experiencia: [crearInformacionPerfilInput]!
-        estudios: [crearInformacionPerfilInput]!
         personalidad: [crearInformacionPerfilInput]!
-        pasatiempos: [crearInformacionPerfilInput]!
+        pasatiempos: String!
         telefono: String!
     }
 
@@ -271,13 +302,14 @@ const typeDefs = gql`
         contrasena: String
         facebook: String
         github: String
+        linkedin: String
         edad: Int
         imagen: String
-        descripcion: [actualizarInformacionPerfilInput]
+        descripcion: String
+        estudios: [actualizarEstudioInput]
         experiencia: [actualizarInformacionPerfilInput]
-        estudios: [actualizarInformacionPerfilInput]
         personalidad: [actualizarInformacionPerfilInput]
-        pasatiempos: [actualizarInformacionPerfilInput]
+        pasatiempos: String
         telefono: String
     }
 
