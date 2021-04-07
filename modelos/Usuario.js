@@ -34,6 +34,10 @@ const UsuarioSchema = mongoose.Schema({
         type: String,
         require: true
     },
+    linkedin:{
+        type: String,
+        require: true
+    },
     edad:{
         type: Number,
         require: true
@@ -42,23 +46,36 @@ const UsuarioSchema = mongoose.Schema({
         type: String,
         require: true
     },
-    descripcion: [
+    descripcion: {
+        type: String,
+        require: true
+    },
+    estudios: [
         mongoose.Schema({
-            texto: {
+            titulo: {
+                type: String,
+                require: true
+            },
+            descripcion: {
+                type: String,
+                require: true
+            },
+            tecnologia: {
+                type: mongoose.Schema.Types.ObjectId,
+                require: true,
+                ref: "Tecnologia"
+            },
+            fecha: {
+                type: String,
+                require: true
+            },
+            tipo: {
                 type: String,
                 require: true
             }
         })
     ],
     experiencia: [
-        mongoose.Schema({
-            texto: {
-                type: String,
-                require: true
-            }
-        })
-    ],
-    estudios: [
         mongoose.Schema({
             texto: {
                 type: String,
@@ -74,14 +91,10 @@ const UsuarioSchema = mongoose.Schema({
             }
         })
     ],
-    pasatiempos: [
-        mongoose.Schema({
-            texto: {
-                type: String,
-                require: true
-            }
-        })
-    ],
+    pasatiempos: {
+        type: String,
+        require: true
+    },
     telefono:{
         type: String,
         require: true
