@@ -13,6 +13,7 @@ const typeDefs = gql`
         facebook: String!
         github: String!
         linkedin: String!
+        curriculum: String
         edad: Int!
         imagen: String!
         descripcion: String!
@@ -56,6 +57,7 @@ const typeDefs = gql`
         fecha: String!
         estado: EstadoProyectoEnum!
         imagen: String!
+        infografia: String
         updatedAt: String!
         createdAt: String!
     }
