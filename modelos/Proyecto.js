@@ -58,6 +58,10 @@ const ProyectoSchema = mongoose.Schema({
         type: String,
         require: true
     },
+    infografia: {
+        type: String,
+        require: false
+    },
     updatedAt:{
         type: Date,
         default: Date.now(),

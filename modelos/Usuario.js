@@ -38,6 +38,10 @@ const UsuarioSchema = mongoose.Schema({
         type: String,
         require: true
     },
+    curriculum:{
+        type: String,
+        require: false
+    },
     edad:{
         type: Number,
         require: true
